@@ -19,9 +19,11 @@ use Moxarife\Api\Services\InventoryService;
 use Moxarife\Api\Services\TokenService;
 use Slim\Factory\AppFactory;
 
-require dirname(__DIR__) . '/vendor/autoload.php';
+$apiRoot = is_file(dirname(__DIR__) . '/vendor/autoload.php') ? dirname(__DIR__) : __DIR__;
 
-$environment = Environment::fromSources(dirname(__DIR__) . '/.env');
+require $apiRoot . '/vendor/autoload.php';
+
+$environment = Environment::fromSources($apiRoot . '/.env');
 $pdo = Connection::fromEnvironment($environment);
 
 $users = new UserRepository($pdo);
