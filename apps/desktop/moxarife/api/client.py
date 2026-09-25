@@ -25,7 +25,12 @@ class ApiClient:
         self.base_url = base_url.rstrip("/")
         self.timeout = timeout
         self.session = requests.Session()
-        self.session.headers.update({"Accept": "application/json", "Content-Type": "application/json"})
+        self.session.headers.update({
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            # O ModSecurity da hospedagem bloqueia o User-Agent padrão do requests.
+            "User-Agent": "Moxarife/0.1",
+        })
         self._session_data: Session | None = None
 
     @property

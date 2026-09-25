@@ -20,6 +20,9 @@ class ApiClientTests(unittest.TestCase):
         self.response.ok = True
         self.response.json.return_value = json.loads(self.response.content)
 
+    def test_client_uses_application_user_agent(self) -> None:
+        self.assertEqual(self.client.session.headers["User-Agent"], "Moxarife/0.1")
+
     @patch("moxarife.api.client.requests.Session.request")
     def test_login_sets_session(self, request: Mock) -> None:
         request.return_value = self.response
