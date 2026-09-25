@@ -1,0 +1,8 @@
+.git
+.gitignore
+**/.env
+**/.venv
+**/vendor
+**/node_modules
+apps/desktop/dist
+apps/desktop/build

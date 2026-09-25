@@ -2,18 +2,34 @@
 .env
 .env.*
 !.env.example
+**/.env
+**/.env.*
+!**/.env.example
 
 # Dependências
 node_modules/
 vendor/
 .venv/
 venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.phpunit.result.cache
 
-# Builds e artefatos
-dist/
+# Builds, executáveis e artefatos
 build/
-coverage/
+dist/
+*.AppImage
+*.exe
+*.msi
+*.deb
+*.rpm
+
+# Logs, uploads e dados locais
 *.log
+logs/
+uploads/
+storage/
 
 # Sistema operacional e editores
 .DS_Store
