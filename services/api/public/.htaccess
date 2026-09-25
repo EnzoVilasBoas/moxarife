@@ -1,5 +1,21 @@
+Options -Indexes
+AddDefaultCharset UTF-8
+
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "DENY"
+    Header always set Referrer-Policy "no-referrer"
+</IfModule>
+
 <IfModule mod_rewrite.c>
     RewriteEngine On
+
+    # Nunca servir código, dependências, configuração ou migrations.
+    RewriteRule ^(?:src|vendor|bin|database|tests|private)(?:/|$) - [F,L,NC]
+    RewriteRule ^(?:composer\.(?:json|lock)|phpunit\.xml)(?:$|/) - [F,L,NC]
+    RewriteRule ^\.env(?:$|/) - [F,L,NC]
+
+    # Encaminhar as rotas da API para o front controller.
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^ index.php [QSA,L]
