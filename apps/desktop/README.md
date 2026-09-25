@@ -13,7 +13,7 @@ pip install -r requirements.txt
 python main.py
 ```
 
-A URL da API pode ser alterada por `MOXARIFE_API_URL`.
+Por padrão, o aplicativo usa a API publicada em `https://utilidades.enzovilasboas.com.br/api/v1`. A URL pode ser alterada por `MOXARIFE_API_URL` para desenvolvimento local.
 
 ## Testes
 

@@ -1,12 +1,19 @@
 # -*- mode: python ; coding: utf-8 -*-
 
+from pathlib import Path
 from PyInstaller.utils.hooks import collect_submodules
 
-hiddenimports = collect_submodules('requests') + collect_submodules('keyring')
+project_root = Path(SPECPATH)
+
+hiddenimports = (
+    collect_submodules('requests')
+    + collect_submodules('keyring')
+    + collect_submodules('keyring.backends')
+)
 
 a = Analysis(
-    ['main.py'],
-    pathex=[],
+    [str(project_root / 'main.py')],
+    pathex=[str(project_root)],
     binaries=[],
     datas=[],
     hiddenimports=hiddenimports,
@@ -28,6 +35,7 @@ exe = EXE(
     strip=False,
     upx=True,
     console=False,
+    disable_windowed_traceback=False,
 )
 coll = COLLECT(
     exe,

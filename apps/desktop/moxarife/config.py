@@ -12,6 +12,9 @@ class Settings:
     @classmethod
     def from_environment(cls) -> "Settings":
         return cls(
-            api_url=os.getenv("MOXARIFE_API_URL", "http://127.0.0.1:8080/api/v1").rstrip("/"),
+            api_url=os.getenv(
+                "MOXARIFE_API_URL",
+                "https://utilidades.enzovilasboas.com.br/api/v1",
+            ).rstrip("/"),
             request_timeout=float(os.getenv("MOXARIFE_REQUEST_TIMEOUT", "15")),
         )

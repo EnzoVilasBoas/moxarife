@@ -55,7 +55,7 @@ python main.py
 
 No Windows PowerShell, ative o ambiente com `.venv\Scripts\Activate.ps1`.
 
-Por padrão, o desktop procura a API em `http://127.0.0.1:8080/api/v1`. A URL pode ser alterada na tela de login ou pela variável `MOXARIFE_API_URL`.
+Por padrão, o desktop procura a API publicada em `https://utilidades.enzovilasboas.com.br/api/v1`. A URL pode ser alterada pela variável `MOXARIFE_API_URL` para desenvolvimento local.
 
 ## Empacotamento
 
